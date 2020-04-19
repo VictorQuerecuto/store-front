@@ -5,7 +5,7 @@ use it so long as you have mysql, apache, and php (and you throw the right files
 different from how xampp is laid out).
 - you can download xampp from https://www.apachefriends.org/index.html
 
-'fundibula-export.sql' has the table for you to import into your machine 
+'fundibula.sql' has the table for you to import into your machine 
 (I also included the relevant part of my 'mysql' folder from xampp just in case).
 
 Under 'htdocs/fundibula' are the php files for the webpages:
