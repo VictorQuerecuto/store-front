@@ -3,6 +3,7 @@
 I'm working in xampp because it's an easy all-in-one environment on windows, but this should work any way you 
 use it so long as you have mysql, apache, and php (and you throw the right files in the right place, if it's 
 different from how xampp is laid out).
+- you can download xampp from https://www.apachefriends.org/index.html
 
 'fundibula-export.sql' has the table for you to import into your machine 
 (I also included the relevant part of my 'mysql' folder from xampp just in case).
