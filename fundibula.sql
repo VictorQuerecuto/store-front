@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2020 at 10:26 PM
+-- Generation Time: Apr 20, 2020 at 04:06 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -76,7 +76,7 @@ CREATE TABLE `customers` (
 CREATE TABLE `items` (
   `itemID` varchar(10) NOT NULL,
   `name` varchar(64) NOT NULL,
-  `cost` int(11) NOT NULL
+  `cost` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -84,8 +84,10 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`itemID`, `name`, `cost`) VALUES
-('B000WON1Z0', 'Small Thing', 10),
-('B000WON1Z1', 'Big Thing', 1000);
+('B000WON1Z0', 'Small Thing', '10.00'),
+('B000WON1Z1', 'Big Thing', '1000.00'),
+('C99WON2Y0', 'Item Added by POST', '1000.00'),
+('C99WON2Y9', 'Item Numero San', '10.00');
 
 --
 -- Indexes for dumped tables
