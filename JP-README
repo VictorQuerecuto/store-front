@@ -11,3 +11,7 @@ different from how xampp is laid out).
 Under 'htdocs/fundibula' are the php files for the webpages:
 - make sure to edit db_connection to connect to your local database or the jorde.dev database
   (or use your own connection file and change the 'include' at the top of the php pages)
+
+'phpExamples' probably won't just run as-is, it's just a compilation of all the PDO operations in one file 
+for easy access. Each example itself should work as-is in a new php file with the mysql table (though you 
+might need to add example data to the table).
