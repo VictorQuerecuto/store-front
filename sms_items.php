@@ -2,20 +2,11 @@
 require 'db_connection.php';
 require 'sms_header.php';
 
-// insert data
-if(isset($_POST['itemID']) && isset($_POST['name']) && isset($_POST['price']))
-{
-	$itemID = htmlentities($_POST['itemID']);
-	$name = htmlentities($_POST['name']);
-	$price = htmlentities($_POST['price']);
-	$image = htmlentities($_POST['image']);
-	$description = htmlentities($_POST['description']);
+$stmt = $conn->prepare("SELECT itemID, name, price, description FROM item");
+$stmt->execute();
 
-	$stmt = $conn->prepare('INSERT INTO item(itemID, name, price, image, description) VALUES(?, ?, ?, ?, ?)');
-	$stmt->execute([$itemID, $name, $price, $image, $description]);
-
-	echo "Item added!";
-}
+//Retrieve the rows using fetchAll.
+$items = $stmt->fetchAll();
 
 // close connection
 $conn = null;
@@ -26,7 +17,20 @@ $conn = null;
 		<title>SMS - Add/Remove Items</title>
 	</head>
 	<body>
-		<form method = "POST" action = "SMS_items.php">
+		<form method = "POST" action = "SMS_remove_item.php">
+			<div>
+				<label for = "item-select">Choose an item to remove:</label>
+				<select id = "item-select" name = "itemID">
+					<?php foreach($items as $item): ?>
+					<option value="<?= $item['itemID']; ?>"><?= $item['itemID']; ?> 
+						<?= $item['name']; ?> $<?= $item['price']; ?>  <?= $item['description']; ?>
+					</option>
+					<?php endforeach; ?>
+				</select>
+			</div>
+			<input type = "submit" value = "Remove Item">
+		</form>
+		<form method = "POST" action = "SMS_add_item.php">
 			<div>
 				<label>Item ID</label><br>
 				<input type = "text" name = "itemID" required>
@@ -37,7 +41,7 @@ $conn = null;
 			</div>
 			<div>
 				<label>Cost of Item</label>
-				<input type = "number" name = "price" required>
+				<input type = "number" name = "price" step = "0.01" required>
 			</div>
 			<div>
 				<label>Image of Item</label>

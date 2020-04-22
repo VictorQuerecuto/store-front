@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 06:05 PM
+-- Generation Time: Apr 22, 2020 at 06:50 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -111,6 +111,14 @@ CREATE TABLE `item` (
   `image` varchar(128) NOT NULL,
   `description` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `item`
+--
+
+INSERT INTO `item` (`itemID`, `name`, `price`, `image`, `description`) VALUES
+('B000WON1Z0', 'Busha Browne Jerk Seasoning Rub, 4 oz ', '12.00', 'placeholder.jpg', 'Not eligible for Amazon Prime.\r\n\r\n    Authentic, hot spicy seasoning paste especially compounded for the jerking of meat or fish\r\n'),
+('B000WON1Z1', 'Z1 Item', '12.57', 'placeholder.jpg', 'This is a description');
 
 -- --------------------------------------------------------
 
