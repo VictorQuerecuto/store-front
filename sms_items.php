@@ -35,7 +35,7 @@ $conn = null;
 		<h1>Add Items</h1>
 		<form method = "POST" action = "SMS_add_item.php">
 			<div>
-				<label>Item ID</label><br>
+				<label>Item ID</label>
 				<input type = "text" name = "itemID" required>
 			</div>
 			<div>
