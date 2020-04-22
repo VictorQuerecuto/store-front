@@ -3,7 +3,7 @@ require 'db_connection.php';
 require 'sms_header.php';
  
 //Prepare the select statement.
-$stmt = $conn->prepare("SELECT itemID, created, expires, percent FROM discount");
+$stmt = $conn->prepare("SELECT discountID, itemID, created, expires, percent FROM discount");
 // TODO need to add WHERE to statement to get only expired discounts
 $stmt->execute();
  
@@ -22,11 +22,15 @@ $conn = null;
 		<form method = "POST" action = "SMS_print_orders.php">
 			<div>
 				<label for = "discount-select">Choose an expired discount to print orders:</label>
-				<select id = "discount-select" name = "itemID">
+				<select id = "discount-select" name = "discountID">
 					<?php foreach($discounts as $discount): ?>
-					<option value="<?= $discount['itemID']; ?>"><?= $discount['itemID']; ?> 
-						created <?= $discount['created']; ?> expires <?= $discount['expires']; ?> discount 
-						<?= $discount['percent'] * 100; ?>%</option>
+					<option value="<?= $discount['discountID']; ?>">
+						<?= $discount['discountID']; ?> 
+						<?= $discount['itemID']; ?> 
+						created <?= $discount['created']; ?> 
+						expires <?= $discount['expires']; ?> 
+						discount <?= $discount['percent'] * 100; ?>%
+					</option>
 					<?php endforeach; ?>
 				</select>
 			</div>
