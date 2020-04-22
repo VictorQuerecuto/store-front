@@ -1,5 +1,5 @@
 <?php
-$servername = "jorde.dev";
+$servername = "localhost";
 $username = "mainuser";
 $password = "mainuser123!";
 $db = "group_buy";
