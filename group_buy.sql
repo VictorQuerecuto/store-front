@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 08:24 PM
+-- Generation Time: Apr 22, 2020 at 09:40 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -137,6 +137,14 @@ CREATE TABLE `item_order` (
   `shippingInfo` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `item_order`
+--
+
+INSERT INTO `item_order` (`orderID`, `discountID`, `customerID`, `orderInfo`, `shippingInfo`) VALUES
+(1, 1, 1, 'FIRST EVER ORDER, BABYYY', 'AND THIS BE SOME SHIPPIN INFO, YEEHAW'),
+(2, 1, 2, 'Some second bloke ordered off my coupon, what a lad.', 'Ship it straight into his hot tub.');
+
 -- --------------------------------------------------------
 
 --
@@ -233,7 +241,7 @@ ALTER TABLE `discount_policy`
 -- AUTO_INCREMENT for table `item_order`
 --
 ALTER TABLE `item_order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
