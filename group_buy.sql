@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2020 at 06:50 PM
+-- Generation Time: Apr 22, 2020 at 08:24 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -40,6 +40,7 @@ CREATE TABLE `amazon` (
 
 CREATE TABLE `cart` (
   `cartID` int(11) NOT NULL,
+  `customerID` int(11) NOT NULL,
   `dateAdded` datetime NOT NULL,
   `quantity` int(11) NOT NULL,
   `subtotal` decimal(12,2) NOT NULL
@@ -52,6 +53,7 @@ CREATE TABLE `cart` (
 --
 
 CREATE TABLE `customer` (
+  `customerID` int(11) NOT NULL,
   `name` varchar(128) NOT NULL,
   `email` varchar(128) NOT NULL,
   `address` varchar(512) NOT NULL,
@@ -66,6 +68,7 @@ CREATE TABLE `customer` (
 --
 
 CREATE TABLE `discount` (
+  `discountID` int(11) NOT NULL,
   `itemID` varchar(10) NOT NULL,
   `created` datetime NOT NULL,
   `expires` datetime NOT NULL,
@@ -76,9 +79,9 @@ CREATE TABLE `discount` (
 -- Dumping data for table `discount`
 --
 
-INSERT INTO `discount` (`itemID`, `created`, `expires`, `percent`) VALUES
-('B000WON1Z0', '2020-04-22 11:36:11', '2020-04-22 19:36:11', 0.02),
-('B000WON1Z1', '2020-04-22 11:37:50', '2020-04-22 16:37:50', 0.07);
+INSERT INTO `discount` (`discountID`, `itemID`, `created`, `expires`, `percent`) VALUES
+(1, 'B000WON1Z0', '2020-04-22 11:36:11', '2020-04-22 19:36:11', 0.02),
+(2, 'B000WON1Z1', '2020-04-22 11:37:50', '2020-04-22 16:37:50', 0.07);
 
 -- --------------------------------------------------------
 
@@ -128,6 +131,8 @@ INSERT INTO `item` (`itemID`, `name`, `price`, `image`, `description`) VALUES
 
 CREATE TABLE `item_order` (
   `orderID` int(11) NOT NULL,
+  `discountID` int(11) NOT NULL,
+  `customerID` int(11) NOT NULL,
   `orderInfo` varchar(1024) NOT NULL,
   `shippingInfo` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -164,13 +169,13 @@ ALTER TABLE `cart`
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`name`,`email`);
+  ADD PRIMARY KEY (`customerID`);
 
 --
 -- Indexes for table `discount`
 --
 ALTER TABLE `discount`
-  ADD PRIMARY KEY (`itemID`);
+  ADD PRIMARY KEY (`discountID`);
 
 --
 -- Indexes for table `discount_policy`
@@ -205,6 +210,18 @@ ALTER TABLE `store`
 --
 ALTER TABLE `cart`
   MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `customer`
+--
+ALTER TABLE `customer`
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `discount`
+--
+ALTER TABLE `discount`
+  MODIFY `discountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `discount_policy`
