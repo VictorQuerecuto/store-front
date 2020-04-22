@@ -17,6 +17,8 @@ $conn = null;
 		<title>SMS - Add/Remove Items</title>
 	</head>
 	<body>
+		<br>
+		<h1>Remove Items</h1>
 		<form method = "POST" action = "SMS_remove_item.php">
 			<div>
 				<label for = "item-select">Choose an item to remove:</label>
@@ -30,6 +32,7 @@ $conn = null;
 			</div>
 			<input type = "submit" value = "Remove Item">
 		</form>
+		<h1>Add Items</h1>
 		<form method = "POST" action = "SMS_add_item.php">
 			<div>
 				<label>Item ID</label><br>
