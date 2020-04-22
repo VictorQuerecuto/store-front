@@ -26,7 +26,7 @@ $conn = null;
 		<title>SMS - Add/Remove Items</title>
 	</head>
 	<body>
-		<form method = "POST" action = "SMS_item.php">
+		<form method = "POST" action = "SMS_items.php">
 			<div>
 				<label>Item ID</label><br>
 				<input type = "text" name = "itemID" required>
